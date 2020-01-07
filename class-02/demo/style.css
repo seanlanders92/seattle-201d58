@@ -1,0 +1,16 @@
+body{
+  background-color: thistle;
+}
+
+.bulletList{
+  color: red;
+}
+
+#starbucks{
+  color: green;
+  font-size: 40px;
+}
+
+ol li{
+  color: purple;
+}
