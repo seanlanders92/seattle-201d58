@@ -71,9 +71,10 @@ var sum = (function(param) {
 ```
 
 ## Global vs Local Varaibles
- - Where are variables available to functions and scripts
 
- - Local
+- Where are variables available to functions and scripts.
+  - Local variables are only available within the code block they are defined.
+  - Global variables are available everywhere in the file they are defined.
   
 ```js
 var global = 3;
@@ -87,8 +88,4 @@ function addTwo(num) {
 
 console.log(global);
 console.log(local);
-
-
-
 ```
-
