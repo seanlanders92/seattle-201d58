@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My Pokemon</title>
+</head>
+
+<body>
+  <form id="add-pokemon">
+    <fieldset>
+      <legend>Basic Information</legend>
+      <label>Name</label>
+      <input name="name" type="text">
+      <label>Types</label>
+      <input name="types" type="text">
+    </fieldset>
+    <fieldset>
+      <legend>Pokemon Stats</legend>
+      <label>Health Points</label>
+      <input name="hp" type="text">
+      <label>Defense</label>
+      <input name="defense" type="text">
+      <label>Attack</label>
+      <input name="attack" type="text">
+    </fieldset>
+    <button type="submit">Create Pokemon</button>
+  </form>
+  <section id="card"></section>
+  <script src="pokemon.js"></script>
+</body>
+
+</html>
