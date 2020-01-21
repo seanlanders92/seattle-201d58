@@ -63,7 +63,7 @@ function handleSubmit(event) {
   var defense = parseInt(event.target.defense.value);
   var attack = parseInt(event.target.attack.value);
 
-  event.target.name.value = null;
+  pokemonForm.reset();
 
   var newPokemon = new Pokemon(name, types, hp, defense, attack);
 
