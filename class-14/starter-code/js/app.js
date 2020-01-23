@@ -57,3 +57,13 @@ function generateCatalog() {
 
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
+//console.log(Product.allProducts);
+
+var dropDown = document.getElementById('items');
+var items = document.createElement('option');
+
+for(var i = 0; i < Product.allProducts.length; i++){
+  var items = document.createElement('option');
+  items.textContent = Product.allProducts[i].name;
+  dropDown.appendChild(items);
+}
