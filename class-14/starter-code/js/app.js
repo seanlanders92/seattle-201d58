@@ -1,37 +1,40 @@
 'use strict';
 
 // Cart constructor.
-var Cart = function(items) {
+var Cart = function (items) {
   // this.items is an array of CartItem instances.
-  this.items = items;
+  this.allItems = items;
 };
 
-Cart.prototype.addItem = function(product, quantity) {
+Cart.prototype.addItem = function (product, quantity) {
+  var newItem = new CartItem(product, quantity);
+  this.allItems.push(newItem);
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
 };
 
-Cart.prototype.saveToLocalStorage = function() {
-  // TODO: Fill in this instance method to save the contents of the cart to localStorage
+Cart.prototype.saveToLocalStorage = function () {
+  var arrayString = JSON.stringify(this);
+ localStorage.setItem('cart', arrayString);
 };
 
-Cart.prototype.removeItem = function(item) {
+Cart.prototype.removeItem = function (item) {
   // TODO: Fill in this instance method to remove one item from the cart.
   // Note: You will have to decide what kind of parameter to pass in here!
 };
 
-var CartItem = function(product, quantity) {
+var CartItem = function (product, quantity) {
   this.product = product;
   this.quantity = quantity;
 };
 
 // Product contructor.
-var Product = function(filePath, name) {
+var Product = function (filePath, name) {
   this.filePath = filePath;
   this.name = name;
   Product.allProducts.push(this);
 };
 Product.allProducts = [];
-
+Cart.allItems = [];
 function generateCatalog() {
   new Product('assets/bag.jpg', 'Bag');
   new Product('assets/banana.jpg', 'Banana');
@@ -57,13 +60,35 @@ function generateCatalog() {
 
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
-//console.log(Product.allProducts);
 
 var dropDown = document.getElementById('items');
 var items = document.createElement('option');
 
-for(var i = 0; i < Product.allProducts.length; i++){
+for (var i = 0; i < Product.allProducts.length; i++) {
   var items = document.createElement('option');
   items.textContent = Product.allProducts[i].name;
   dropDown.appendChild(items);
 }
+
+function handleAddToCart(event) {
+  event.preventDefault();
+  
+  var quantity = parseInt(event.target.quantity.value);
+  var productName = event.target.items.value;
+  var product;
+  
+  for (var i = 0; i < Product.allProducts.length; i++) {
+    
+    if (Product.allProducts[i].name === productName) {
+      product = Product.allProducts[i];
+      break;
+    }
+  }
+  cart.addItem(product, quantity);
+  cart.saveToLocalStorage();
+}
+
+var catalog = document.getElementById('catalog');
+catalog.addEventListener('submit', handleAddToCart);
+
+
