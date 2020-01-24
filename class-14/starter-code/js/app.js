@@ -14,12 +14,12 @@ Cart.prototype.addItem = function (product, quantity) {
 
 Cart.prototype.saveToLocalStorage = function () {
   var arrayString = JSON.stringify(this);
- localStorage.setItem('cart', arrayString);
+  localStorage.setItem('cart', arrayString);
 };
 
 Cart.prototype.removeItem = function (index) {
- this.allItems.splice(index, 1);
- this.saveToLocalStorage();
+  this.allItems.splice(index, 1);
+  this.saveToLocalStorage();
 };
 
 var CartItem = function (product, quantity) {
@@ -62,7 +62,6 @@ function generateCatalog() {
 generateCatalog();
 
 var dropDown = document.getElementById('items');
-var items = document.createElement('option');
 
 for (var i = 0; i < Product.allProducts.length; i++) {
   var items = document.createElement('option');
@@ -72,13 +71,10 @@ for (var i = 0; i < Product.allProducts.length; i++) {
 
 function handleAddToCart(event) {
   event.preventDefault();
-  
   var quantity = parseInt(event.target.quantity.value);
   var productName = event.target.items.value;
   var product;
-  
   for (var i = 0; i < Product.allProducts.length; i++) {
-    
     if (Product.allProducts[i].name === productName) {
       product = Product.allProducts[i];
       break;
